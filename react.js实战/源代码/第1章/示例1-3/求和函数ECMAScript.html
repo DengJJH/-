@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <script>
+function sum() {
+    var sum = 0;
+    for (var val of Array.prototype.slice.call(arguments)) {
+        sum += val;
+    }
+    return sum;
+}	
+console.log(sum(1,2,3))  			//输出6
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>父子组件通信</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class Child extends React.Component{ 
+        constructor(props){ 
+            super(props); 
+            this.state = {} 
+        } 
+        render(){ 
+            return ( 
+                <div> 
+                    <button onClick={this.props.refreshParent}> 
+                        更新父组件 
+                    </button> 
+                </div> 
+            ) 
+        } 
+    } 
+    class Father extends React.Component{ 
+        constructor(props){ 
+            super(props); 
+            this.state = {} 
+        } 
+        refreshParent(){ 
+            this.setState({ 
+                parentText: "子组件更新父组件成功", 
+            }) 
+        } 
+        render(){ 
+            return ( 
+                <div> 
+                    <Child refreshParent={this.refreshParent.bind(this)} /> 
+                    {this.state.parentText || "父组件更新前"} 
+                    </div>  
+            ) 
+        } 
+    }
+     ReactDOM.render(<Father />, document.getElementById('root'));
+</script>
+</body>
+</html>

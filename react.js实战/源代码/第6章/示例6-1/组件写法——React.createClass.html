@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件写法--React.createClass</title>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    var HelloWorld = React.createClass({
+        getInitialState: function(){
+            return{
+                message:"点击显示信息"
+            };
+        },
+        componentWillMount: function(){
+            console.log("1. 挂载前执行")
+        },
+        componentDidMount: function(){
+            console.log("2. 挂载后执行")
+        },
+        showMessage:function(){
+            alert("Hello React");
+        },
+        render:function() {
+            return (
+                <button onClick={this.showMessage}>{this.state.message}</button>
+            )
+        }
+  });
+  ReactDOM.render(<HelloWorld />,document.getElementById("root"));
+</script>
+</body>
+</html>

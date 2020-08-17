@@ -1,0 +1,16 @@
+{
+  "name": "mobx-demo",
+  "version": "1.0.0",
+  "description": "mobx demo",
+  "repository": "",
+  "author": "Liu Jianghong",
+  "main": "bundle.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "mobx": "^4.3.0",
+    "mobx-react": "^5.1.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  }
+}

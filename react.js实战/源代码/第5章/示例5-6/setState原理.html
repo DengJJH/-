@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setState原理</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class HelloWorld extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                count:0
+            };
+            this.showState = this.showState.bind(this);
+        }
+        componentDidMount() {
+            this.setState({
+                count:this.state.count+1
+            });
+            this.setState({
+                count:this.state.count+1
+            });
+            this.setState({
+                count:this.state.count+1
+            });
+            console.log("setState后立即显示state值为："+this.state.count);
+        }
+        showState(){
+            console.log("showState方法中的state值为："+this.state.count);
+        }
+        render () {
+            return(
+                <button onClick={this.showState}>显示当前state值</button>
+            )
+        }
+    }
+    ReactDOM.render(<HelloWorld />, document.getElementById('root'));
+</script>
+</body>
+</html>

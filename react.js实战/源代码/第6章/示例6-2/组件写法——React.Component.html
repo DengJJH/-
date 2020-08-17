@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件写法--React.Component</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    class HelloWorld extends React.Component{
+        constructor(){
+            super()
+            this.state = {
+                message:"点击显示信息"
+            }
+        }
+        componentWillMount(){
+            console.log("1. 挂载前执行")
+        }
+        componentDidMount(){
+            console.log("2. 挂载后执行")
+        }
+        showMessage(){
+            alert("Hello React");
+        }
+        render(){
+            return (
+                <button onClick={this.showMessage}>{this.state.message}</button>
+            )
+        }
+  }
+  ReactDOM.render(<HelloWorld />,document.getElementById("root"));
+</script>
+</body>
+</html>

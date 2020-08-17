@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高阶函数</title>
+    <script type="text/javascript">
+        function add(x,y) {
+            return x+y;
+        }
+        function higherFunc(x,y,f) {
+            return f(x,y)
+        }
+        console.log(higherFunc(1,2,add))
+    </script>
+</head>
+<body>
+</body>
+</html>

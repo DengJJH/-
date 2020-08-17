@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery数值增加</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            var num = 1;
+            $(".myBtn").click(function(){
+                num ++;
+                $("p").html(num);
+
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="example">
+    <div>
+        <p>1</p>
+        <button class="myBtn">增加器</button>
+    </div>
+</div>
+</body>
+</html>

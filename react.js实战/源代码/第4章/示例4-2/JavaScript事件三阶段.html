@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript事件三阶段</title>
+  </head>
+  <body>
+    <div id="myDivFather">
+      父节点
+      <div id="myDivSon">
+        子节点
+        <div id="myDivGrandson">
+          孙节点
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var f = document.getElementById('myDivFather')
+      var s = document.getElementById('myDivSon')
+      var g = document.getElementById('myDivGrandson')
+      f.addEventListener(
+        'click',
+        function () {
+          console.log('1. father  向下捕获阶段')
+        },
+        true
+      )
+
+      s.addEventListener(
+        'click',
+        function () {
+          console.log('2. son  向下捕获阶段')
+        },
+        true
+      )
+      g.addEventListener(
+        'click',
+        function () {
+          console.log('3. grandson  向下捕获阶段')
+        },
+        true
+      )
+      f.addEventListener(
+        'click',
+        function () {
+          console.log('4. father  向上冒泡阶段')
+        },
+        false
+      )
+      s.addEventListener(
+        'click',
+        function () {
+          console.log('5. son  向上冒泡阶段')
+        },
+        false
+      )
+      g.addEventListener(
+        'click',
+        function () {
+          console.log('6. grandson  向上冒泡阶段')
+        },
+        true
+      )
+    </script>
+  </body>
+</html>

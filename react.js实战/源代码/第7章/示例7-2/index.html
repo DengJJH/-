@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mobx demo</title>
+
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script type="text/babel" >
+    'use strict';
+    import {observable, action, computed, useStrict} from 'mobx';
+    import {observer} from 'mobx-react';
+    import React, {Component} from 'react';
+    import ReactDOM from 'react-dom';
+    useStrict(true);
+    class Store {
+        @observable todos = [
+            {
+                title: "todo标题",
+                done: false,
+            },
+            {
+                title: "已经完成 todo 的标题",
+                done: true,
+            }
+        ];
+
+        @action changeTodoTitle({index, title, done}) {
+            this.todos[index].title = title
+            this.todos[index].done = done
+        }
+
+        @action isShow(index) {
+            this.todos[index].done = false
+        }
+
+        @computed get unfinishedTodos() {
+            return this.todos.filter((todo) => todo.done)
+        }
+    }
+
+    @observer
+    class Hello extends Component {
+        render() {
+            return (
+                <div>
+                    <ul>
+                        {this.props.store.unfinishedTodos.map((todo, index) => <li key={`list-${index}`} onClick={()=>{
+                            this.props.store.isShow(index)
+                        }}>{todo.title}</li>)}
+                    </ul>
+                    <div>
+                        <input type="button" onClick={() => {
+                            this.props.store.changeTodoTitle({
+                                index: 0,
+                                title: "修改111后的todo标题",
+                                done: !this.props.store.todos[0].done
+                            });
+                        }} value="点击我"/>
+                    </div>
+                </div>
+            )
+        }
+    }
+
+    //实例化对象
+    const store = new Store();
+
+    ReactDOM.render(
+        <Hello store={store}/>,
+        document.getElementById("root")
+    )
+</script>
+</html>
